@@ -1,7 +1,7 @@
 import React from 'react'
 
 function ArticleTitle(props){
-    console.log(props)
+    
     return(
         <div className = 'title'>
             <h2>
