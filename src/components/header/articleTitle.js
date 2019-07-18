@@ -1,15 +1,29 @@
 import React from 'react'
+import styled from 'styled-components'
+// import {Header ,Container} from 'semantic-ui-react'
+
+const headStyle = {
+    color: 'blue',
+    fontSize:'3rem',
+    textAlign:'center'
+
+}
+  
+
+
+
+
+
 
 function ArticleTitle(props){
     
     return(
-        <div className = 'title'>
-            <h2>
-                <time>
-                    {props.title}
-                </time>
-            </h2>
-        </div>
+        <div style = {headStyle}>{props.title}</div>
+                    
+               
+            
+            
+        
     )
 }
 

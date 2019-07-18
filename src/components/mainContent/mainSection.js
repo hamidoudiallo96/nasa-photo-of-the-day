@@ -1,10 +1,14 @@
 import React from 'react'
+import { Container, Divider } from 'semantic-ui-react'
+
+
 
 function MainContent(props){
     return(
-        <div className = 'main-content'>
+        <Container textAlign='right'>
             <p>{props.content}</p>
-        </div>
+        </Container>
+        
       
     )
 }

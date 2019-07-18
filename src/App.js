@@ -1,24 +1,45 @@
+// imports
 import React,{useState, useEffect} from "react";
 import axios from 'axios';
-import "./App.scss";
-import ArticleTitle from "./components/header/articleTitle";
-import ImageCaller from "./components/mainContent/image";
-import MainContent from "./components/mainContent/mainSection";
+// import ArticleTitle from "./components/header/articleTitle";
+// import ImageCaller from "./components/mainContent/image";
+// import MainContent from "./components/mainContent/mainSection";
+import { Container,Input,Header,Divider } from 'semantic-ui-react'
+import styled from 'styled-components'
+import 'semantic-ui-css/semantic.min.css'
+import CardComponent from './cardComponent'
 
+
+
+
+
+const FlexDiv = styled.div `
+  margin-bottom: 50px;
+  font-style: oblique;
+  font-size: 2rem;
+  text-align: center;
+  background-color: whitesmoke;
+  
+`
+const newStyle = {
+  color: 'crimson',
+  fontSize: '4rem',
+  fontWeight: 'bold',
+  fontStyle: 'oblique'
+}
+
+
+
+// Parent Component
 function App() {
-  const [date,setDate] = useState()
+  const original = '2019-07-18'
+  const [date,setDate] = useState(original)
   const [explanation,setExplanation] = useState('')
   const [mediaType,setMediaType] = useState()
   const [title,setTitle] = useState()
   const [htmlUrl,setHTMLUrl] = useState()
   const [id,setID] = useState('')
-  // const [idFromButton, setIDFromButton] = useState('')
-  // const newDate = () => {
-    
-  //   setIDFromButton(id)
-
   
-  //  }
 
   useEffect(()=>{
     
@@ -46,33 +67,35 @@ function App() {
   
   
   return (
-    <div className="App">
-      
-      <div className ="headerContainer">
-        
-        <div className = 'Date'>
-            <h2>
-                <div className= 'timer'>
-                    
-                    <form>
-                        <input type = 'date' value = {date} onChange = { e =>setDate(e.target.value)}   min="2014-12-30" />
-                        {/* <button onClick ={newDate}> Click Here </button> */}
-                    </form>
-                </div>
-            </h2>
-        </div>
     
-        <ArticleTitle title = {title} />
-      </div>
+    <Container text textAlign = 'center'>
+      <FlexDiv>
+        <Header as = 'h1' style ={newStyle}>NASA APOD </Header>
       
-      <div className = 'media'>
-        <ImageCaller src = {htmlUrl} alt = {mediaType} videoUrl = {htmlUrl}/>
+      
+          <form>
+            <Input type = 'date' value = {date} onChange = { e =>setDate(e.target.value)}   min="2014-12-30" />
+            {/* <button onClick ={newDate}> Click Here </button> */}
+          </form>
+      
+        <Divider />
+        
+          
+        </FlexDiv>
 
-        <MainContent content = {explanation} />
-      </div>
+        {/* <ArticleTitle title = {title} />
+
+        <Divider />  
+        <ImageCaller src = {htmlUrl} alt = {mediaType} videoUrl = {htmlUrl}/>
+        <Divider />
+        <MainContent content = {explanation} /> */}
+        <CardComponent  date = {date} src={htmlUrl} alt = {mediaType} content = {explanation} title ={title} />
+
+
       
       
-    </div>
+      
+    </Container>
   );
 }
 
